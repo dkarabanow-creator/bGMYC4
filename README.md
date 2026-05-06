@@ -154,7 +154,7 @@ cat("Delimited clusters:", length(out), "\n")
 
 The optimized `bGMYC4 v4.1.0` is **fully compatible with R ≥ 4.5** and includes:
 
-| Feature / Возможность | Description / Описание |
+| Feature / Возможность | Description |
 |----------------------|----------------------|
 | 🔁 **Automatic parallelization** | `bgmyc.multiphylo()` runs in parallel via `future.apply` (uses all CPU cores by default) |
 | 🧹 **Pure-R post-processing** | `bgmyc.spec()` and `spec.probmat()` use native R functions — no external `sort`/`uniq` dependencies |
@@ -162,13 +162,13 @@ The optimized `bGMYC4 v4.1.0` is **fully compatible with R ≥ 4.5** and include
 | 🔐 **Parallel-safe RNG** | `future.seed = TRUE` ensures reproducible multi-tree analyses |
 | 🖥️ **R ≥ 4.5 compatibility** | Full support for modern R features, byte-compilation (`compiler::enableJIT(3)`), and optimized memory management |
 
-### Limit CPU cores (optional) / Ограничение числа ядер
+### Limit CPU cores (optional) 
 ```r
 # Before running bgmyc.multiphylo():
 future::plan(future::multisession, workers = 8)  # Use 8 cores instead of all
 ```
 
-### Export results to CSV / Экспорт результатов
+### Export results to CSV 
 ```r
 # After bgmyc.spec():
 write.csv(spec_out$specprobs, 
@@ -177,14 +177,14 @@ write.csv(spec_out$specprobs,
           fileEncoding = "UTF-8")
 ```
 
-### Validate model fit / Проверка соответствия модели
+### Validate model fit 
 ```r
 # Compare Yule vs Coalescent rates:
 rates <- checkrates(result_multi)
 plot(rates)  # Opens 4 diagnostic plots
 ```
 
-### Speed tip / Совет по ускорению
+### Speed tip 
 ```r
 # Add to your ~/.Rprofile for automatic JIT acceleration:
 compiler::enableJIT(3)  # +2–3% speedup on all MCMC loops, no code changes
@@ -246,7 +246,7 @@ See [LICENSE](LICENSE) for details.
 
 ---
 
-## 📬 Contact / Контакты
+## 📬 Contact
 
 **Dmitry Karabanov**  
 📧 dk[at]ibiw.ru  
