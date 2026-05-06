@@ -1,0 +1,28 @@
+Package: bGMYC4
+Type: Package
+Title: Bayesian GMYC Model for Species Delimitation (Development Version)
+Version: 4.1.0
+Authors@R: c(
+    person("Noah", "Reid", email = "noah.reid@gmail.com", role = c("aut"), comment = "Original author of bGMYC"),
+    person("Dmitry", "Karabanov", email = "dk@ibiw.ru", role = c("aut", "cre"), comment = "Maintainer of bGMYC4"),
+    person("Qwen", "3.6", email = "qwen@alibabacloud.com", role = c("ctb"), comment = "Code modernization and R 4.x compatibility")
+  )
+Description: Implements a Bayesian version of the general mixed Yule-coalescent
+    model for species delimitation introduced by Pons et al. (2006). It uses
+    Markov Chain Monte Carlo simulation to evaluate the posterior distribution
+    of the model and supports flexible prior specification on model parameters.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+Imports:
+    ape (>= 5.0),
+    future,
+    future.apply,
+    parallel
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
