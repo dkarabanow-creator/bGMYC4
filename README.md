@@ -150,7 +150,7 @@ cat("Delimited clusters:", length(out), "\n")
 
 ---
 
-## ⚡ Performance & Compatibility / Производительность и совместимость
+## ⚡ Performance & Compatibility 
 
 The optimized `bGMYC4 v4.1.0` is **fully compatible with R ≥ 4.5** and includes:
 
