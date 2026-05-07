@@ -255,4 +255,4 @@ See [LICENSE](LICENSE) for details.
 
 ---
 
-> *bbGMYC4 – Bayesian species delimitation, made simple, reproducible, and biologist‑friendly* 🌿🔬
+> *bGMYC4 – Bayesian species delimitation, made simple, reproducible, and biologist‑friendly* 🌿🔬
