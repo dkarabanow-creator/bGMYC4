@@ -144,7 +144,7 @@ cat("Delimited clusters:", length(out), "\n")
 | `thinning` | Sampling interval | `10–50` | Reduces autocorrelation & RAM usage |
 | `py1`, `py2` | Yule rate priors | `0`, `0.5–1.5` | Model: λ ∝ n^py; >1.5 blurs Yule/Coalescent boundary |
 | `pc1`, `pc2` | Coalescent priors | `0`, `1.0–2.0` | Models Ne change; <1 → decline, >1 → growth |
-| `t1`, `t2` | Threshold prior (species count) | `2`, `min(35, ntips-5)` | Must be `< ntips`; auto-capped to prevent crashes |
+| `t1`, `t2` | Threshold prior (species count) | `2`, `min(2, ntips-1)` | Must be `< ntips`; auto-capped to prevent crashes |
 | `scale` | MCMC proposal widths | `c(20–30, 10–15, 3–7)` | Tune via acceptance rates; higher = more conservative |
 | `ppcutoff` | Species lumping threshold | `0.05` (sensitive), `0.95` (strict) | Low = captures high intraspecific variation / ILS |
 
