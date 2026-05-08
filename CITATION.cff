@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "bGMYC4: Bayesian General Mixed Yule-Coalescent Model for Species Delimitation"
+authors:
+  - family-names: "Karabanov"
+    given-names: "Dmitry"
+    orcid: "https://orcid.org/0000-0001-6008-7441"
+version: "4.1.0"
+date-released: "2026-05-05"
+url: "https://github.com/dkarabanow-creator/bGMYC4"
+license: GPL-3.0
