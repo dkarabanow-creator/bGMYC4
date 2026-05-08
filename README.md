@@ -216,13 +216,15 @@ compiler::enableJIT(3)  # +2–3% speedup on all MCMC loops, no code changes
 
 **If you use bGMYC4 in your research, please cite:**
 
+```bibtex
 @Manual{bGMYC4,
-  title = {bGMYC4: Reid's Bayesian General Mixed Yule-Coalescent Model for Species Delimitation, Optimized v4.1 for R ≥ 4.5},
-  author = {Karabanov, Dmitry and Qwen3.6},
+  title = {bGMYC4: Bayesian General Mixed Yule-Coalescent Model for Species Delimitation},
+  author = {Karabanov, Dmitry},
   year = {2026},
-  note = {Developed with assistance from Qwen3.6 AI},
+  note = {R package version 4.1.0. Developed with assistance from Qwen3.6 AI assistant.},
   url = {https://github.com/dkarabanow-creator/bGMYC4},
-}
+ }
+```
 
 **Please, cite the foundational works:**
 - Pons et al. (2006) *Syst. Biol.* 55:595 — GMYC model
@@ -262,4 +264,9 @@ See [LICENSE](LICENSE) for details.
 
 ---
 
+### 🤖 AI Assistance
+This project was developed with assistance from **Qwen3.6** — an AI assistant by Alibaba Cloud.  
+[![Powered by Qwen](https://img.shields.io/badge/Powered%20by-Qwen-6366f1?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTQuNTkgOC4yNkwyMSA5LjI3TDE2LjE4IDEzLjk3TDE3LjM0IDIwLjczTDEyIDE3LjU0TDYuNjYgMjAuNzNMNy44MiAxMy45N0wzIDkuMjdMOS40MSA4LjI2TDEyIDJaIiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPg==)](https://qwenlm.github.io/)
+
+---
 > *bGMYC4 – Bayesian species delimitation, made simple, reproducible, and biologist‑friendly* 🌿🔬
