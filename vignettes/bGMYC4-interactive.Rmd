@@ -161,26 +161,39 @@ prm <- list(
 )
 prm$start[3] <- max(prm$t1 + 1, min(prm$start[3], prm$t2 - 1)) # Safety clamp
 
-# EN: Diagnostic printer & plotter / Функция диагностики и графиков    
+# EN: Diagnostic printer & plotter / Функция диагностики и графиков
 show_diag <- function(res, prm) {
   cat("\n📊 FULL DIAGNOSTICS / ПОЛНАЯ ДИАГНОСТИКА\n")
   cat(sprintf("⚙️  Parameters: mcmc=%d | burnin=%d | thin=%d\n", prm$mcmc, prm$burnin, prm$thinning))
   acc <- res$accept
   cat(sprintf("📈 Acceptance rates: py=%.2f | pc=%.2f | t=%.2f [Optimal/Оптимум: 0.20–0.40]\n", acc[1], acc[2], acc[3]))
-  
+
+  # 🔢 ESS Calculation (Effective Sample Size)
+  if (requireNamespace("mcmcse", quietly = TRUE)) {
+    ess_vals <- sapply(1:4, function(col) round(mcmcse::ess(res$par[, col])))
+    cat(sprintf("🔢 ESS: py=%d | pc=%d | th=%d | logL=%d [Optimal/Оптимум: >200]\n", 
+                ess_vals[1], ess_vals[2], ess_vals[3], ess_vals[4]))
+  } else {
+    cat("⚠️  ESS: package 'mcmcse' not installed. Run install.packages('mcmcse') for full diagnostics.\n")
+    ess_vals <- NULL
+  }
+
   par_vec <- res$par[, 4]
   q <- split(par_vec, cut(seq_along(par_vec), 4, labels = FALSE))
   cv <- sd(sapply(q, var)) / mean(sapply(q, var))
   cat(sprintf("📉 Stationarity (CV<0.6): %s\n", ifelse(cv < 0.6, "✅ YES/ДА", "⚠️ CHECK/ПРОВЕРЬТЕ")))
-  
+
   cat("\n💡 Recommendations / Рекомендации:\n")
   if (acc[1] > 0.50) cat("   ↑ scale[1] or ↑ py2 (py too conservative)\n")
   if (acc[1] < 0.15) cat("   ↓ scale[1] (py too bold)\n")
   if (acc[2] > 0.50) cat("   ↑ scale[2]\n")
   if (acc[2] < 0.15) cat("   ↓ scale[2]\n")
+  if (!is.null(ess_vals) && any(ess_vals < 200)) {
+    cat("   ↑ mcmc or ↓ thinning (ESS < 200: цепь требует больше независимых шагов)\n")
+  }
   if (cv >= 0.6) cat("   ↑ burnin to 30% mcmc or ↑ mcmc (chain not stationary)\n")
   if (cv < 0.6 && all(acc > 0.2 & acc < 0.45)) cat("   ✅ Parameters optimal. Ready for multi-tree.\n")
-  
+
   cat("\n🖼️  Opening trace plots... / Открываю графики сходимости...\n")
   plot(res)
   cat("👀 Close plot window when done. / Закройте окно графиков, когда закончите.\n")
@@ -232,6 +245,24 @@ result_multi <- bgmyc.multiphylo(
   py1 = prm$py1, py2 = prm$py2, pc1 = prm$pc1, pc2 = prm$pc2,
   t1 = prm$t1, t2 = prm$t2, scale = prm$scale, start = prm$start
 )
+
+# 📐 Gelman-Rubin (R̂) convergence check across tree chains
+if (requireNamespace("mcmcse", quietly = TRUE) && length(result_multi) > 1) {
+  cat("\n📐 Gelman-Rubin R̂ convergence check / Проверка сходимости R̂...\n")
+  chains_list <- lapply(result_multi, function(res) res$par[, 3]) # threshold parameter
+  names(chains_list) <- paste0("Tree_", seq_along(result_multi))
+  
+  gr_result <- tryCatch(mcmcse::gelman(chains_list), error = function(e) NULL)
+  if (!is.null(gr_result)) {
+    rhat <- round(gr_result$Rhat, 3)
+    cat(sprintf("🔍 Gelman-Rubin R̂ (threshold): %.3f [Optimal/Оптимум: < 1.05]\n", rhat))
+    if (rhat > 1.05) {
+      cat("⚠️  R̂ > 1.05: Chains show divergence. Increase mcmc/burnin or check tree topologies.\n")
+    } else {
+      cat("✅ Chains converged stably across posterior trees / Цепи сошлись стабильно.\n")
+    }
+  }
+}
 
 cat("\n🌡️  Building heatmap / Строю тепловую карту...\n")
 prob_mat <- spec.probmat(result_multi)
