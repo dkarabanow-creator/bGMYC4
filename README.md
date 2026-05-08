@@ -18,7 +18,7 @@
 | Feature | Description |
 |---------|-------------|
 | 🌲 Single & Multi-tree analysis | Run GMYC on one tree or pool uncertainty across multiple BEAST2 trees |
-| 📊 Interactive diagnostics | Real-time MCMC convergence checks with trace plots and acceptance rate guidance |
+| 📊 Interactive diagnostics | RReal-time MCMC checks: trace plots, acceptance rates, ESS, Gelman-Rubin R̂, auto-tuning hints |
 | ⚙️ Parameter tuning | Safe input handlers with biological hints for priors, scales, and thresholds |
 | 🌡️ Heatmap visualization | Conspecificity probability matrices ordered by tree topology |
 | 🌐 Bilingual workflow | Full EN/RU documentation and interactive vignette |
@@ -50,8 +50,9 @@ install.packages("path/to/bGMYC4_4.1.0.tar.gz", repos = NULL, type = "source")
 
 ### 🔹 System requirements
 - **R ≥ 4.5.1** (tested on 4.5.1–4.5.3)
-- **OS:** Windows 10/11, macOS, Linux
+- **OS:** Windows 11 x64, macOS, Linux
 - **Dependencies:** `ape`, `future`, `future.apply`, `parallel`, `knitr`, `rmarkdown`
+- **Recommended for Diagnostics:** `mcmcse` (for ESS & Gelman-Rubin $\hat{R}$ convergence checks)
 
 ---
 
@@ -164,6 +165,10 @@ The optimized `bGMYC4 v4.1.0` is **fully compatible with R ≥ 4.5** and include
 | 🔐 **Parallel-safe RNG** | `future.seed = TRUE` ensures reproducible multi-tree analyses |
 | 🖥️ **R ≥ 4.5 compatibility** | Full support for modern R features, byte-compilation (`compiler::enableJIT(3)`), and optimized memory management |
 
+### 📈 Statistical Rigor & Diagnostics 
+- **Effective Sample Size (ESS)**: Automatically calculated per parameter when `mcmcse` is installed. Target: `ESS > 200`.
+- **Gelman-Rubin $\hat{R}$**: Post-analysis check comparing MCMC chains across sampled trees. Automatically computed if `mcmcse` is available. Target: `R̂ < 1.05`.
+
 ### Limit CPU cores (optional) 
 ```r
 # Before running bgmyc.multiphylo():
@@ -207,6 +212,8 @@ compiler::enableJIT(3)  # +2–3% speedup on all MCMC loops, no code changes
 | `Error: package 'ape' is not available` | Run `install.packages("ape")` first |
 | `future::evalFuture() failed` | Ensure package is installed via `devtools::install()`, not just `load_all()` |
 | `Non-ASCII characters in Rd file` | All R code is ASCII; comments may contain UTF-8 — this is CRAN-compliant |
+| `ESS < 200` or `R̂ > 1.05` | Install `mcmcse`, then increase `mcmc` or `burnin` as prompted by the diagnostic loop |
+| `ESS: package 'mcmcse' not installed` | Run `install.packages("mcmcse")`. The package works without it, but full convergence stats require it. |
 
 ---
 
