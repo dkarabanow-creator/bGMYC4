@@ -39,11 +39,13 @@ data(east10)
 # Run bGMYC on a single tree (phylo object).
 result.single <- bgmyc.singlephy(phylo = east10[[1]], mcmc = 100, burnin = 1, thinning = 10)
 
-# Run bGMYC on multiple trees (multiphylo object).
-result.multi <- bgmyc.multiphylo(multiphylo = east10, mcmc = 100, burnin = 1, thinning = 10)
-
 # Visualize MCMC output.
 plot(result.single)
+
+# Run bGMYC on multiple trees (multiphylo object).
+# Wrapped in \donttest{} to bypass CRAN check parallel worker limits.
+\donttest{
+result.multi <- bgmyc.multiphylo(multiphylo = east10[1:2],, mcmc = 100, burnin = 1, thinning = 10)
 
 # For multiple trees, visualize MCMC output OR pool samples 
 # from across trees into a single matrix using plot=FALSE.
@@ -58,5 +60,6 @@ spec.probmat(result.multi) -> result.probmat
 # Plot the matrix of conspecificity probabilities.
 # Provide a single tree to order the matrix.
 plot(result.probmat, east10[[1]])
+}
 }
 \keyword{package}

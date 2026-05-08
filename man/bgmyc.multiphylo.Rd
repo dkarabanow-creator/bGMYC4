@@ -73,17 +73,22 @@ Noah M. Reid
 Maintainer: Dmitry Karabanov <dk@ibiw.ru>
 }
 \examples{
-# run an analysis on multiple trees
+# Load test data
 data(east10)
-result.multi <- bgmyc.multiphylo(east10, 100,
-                                 burnin = 1, thinning = 1,
-                                 py1 = 0, py2 = 2,
-                                 pc1 = 0, pc2 = 2,
-                                 t1 = 2, t2 = 51,
-                                 scale = c(20, 10, 5),
-                                 start = c(1, 0.5, 50),
-                                 sampler = bgmyc.gibbs,
-                                 likelihood = bgmyc.lik,
-                                 prior = bgmyc.prior)
-# see ?bGMYC for visualization and summary instructions
+
+# Single tree analysis
+result.single <- bgmyc.singlephy(
+  phylo = east10[[1]], 
+  mcmc = 100, burnin = 1, thinning = 10
+)
+plot(result.single)
+
+# Multi-tree analysis (explicitly 2 trees to satisfy CRAN parallel limits)
+result.multi <- bgmyc.multiphylo(
+  multiphylo = east10[1:2], 
+  mcmc = 100, burnin = 1, thinning = 10
+)
+
+# Post-processing
+probmat <- spec.probmat(result.multi)
 }

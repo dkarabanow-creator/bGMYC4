@@ -11,7 +11,6 @@ bgmyc.singlephy(phylo, mcmc, burnin, thinning, py1 = 0, py2 = 2, pc1 = 0, pc2 = 
     t1 = 2, t2 = 51, scale = c(20, 10, 5), start = c(1, 0.5, 50), 
 	sampler = bgmyc.gibbs, likelihood = bgmyc.lik, prior = bgmyc.prior)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{phylo}{
 an ape "phylo" object}
