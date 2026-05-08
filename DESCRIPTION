@@ -1,6 +1,7 @@
 Package: bGMYC4
 Type: Package
-Title: Bayesian GMYC Model for Species Delimitation (Development Version)
+Title: Bayesian GMYC Model for Species Delimitation (Development
+        Version)
 Version: 4.1.0
 Authors@R: c(
     person("Noah", "Reid", email = "noah.reid@gmail.com", role = c("aut"), comment = "Original author of bGMYC"),
@@ -14,15 +15,15 @@ Description: Implements a Bayesian version of the general mixed Yule-coalescent
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-Imports:
-    ape (>= 5.0),
-    future,
-    future.apply,
-    parallel
-Suggests:
-    testthat (>= 3.0.0),
-    knitr,
-    rmarkdown
+Imports: ape (>= 5.0), future, future.apply
+Suggests: testthat (>= 3.0.0), knitr, rmarkdown
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
+RoxygenNote: 8.0.0
+NeedsCompilation: no
+Packaged: 2026-05-06 05:52:40 UTC; Professional
+Author: Noah Reid [aut] (Original author of bGMYC),
+  Dmitry Karabanov [aut, cre] (Maintainer of bGMYC4),
+  Qwen 3.6 [ctb] (Code modernization and R 4.x compatibility)
+Maintainer: Dmitry Karabanov <dk@ibiw.ru>
+Depends: R (>= 3.5.0)

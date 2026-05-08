@@ -12,6 +12,7 @@ importFrom("grDevices", "heat.colors")
 importFrom("graphics", "abline", "hist", "image", "par", "plot", "text")
 importFrom("stats", "dgamma", "dunif", "rgamma", "rnorm", "runif")
 importFrom("utils", "read.table", "write.table")
+importFrom("graphics", "points")
 
 # Export main functions
 export(bgmyc.singlephy)
@@ -36,4 +37,3 @@ S3method(plot,singlebgmyc)
 S3method(plot,multibgmyc)
 S3method(plot,bgmycprobmat)
 S3method(plot,bgmycrates)
-
