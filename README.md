@@ -234,17 +234,7 @@ compiler::enableJIT(3)  # +2–3% speedup on all MCMC loops, no code changes
 
 ## 🤝 Contributing 
 
-Contributions are welcome! To contribute:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/your-idea`)
-3. Commit changes with clear messages
-4. Push to your fork and open a Pull Request
-
-**For bug reports or feature requests:**  
-→ Use [GitHub Issues](https://github.com/dkarabanow-creator/bGMYC4/issues) with:
-- R session info (`sessionInfo()`)
-- Minimal reproducible example
-- Expected vs actual behavior
+Contributions are welcome! 
 
 ---
 
@@ -265,8 +255,8 @@ See [LICENSE](LICENSE) for details.
 ---
 
 ### 🤖 AI Assistance
-This project was developed with assistance from **Qwen3.6** — an AI assistant by Alibaba Cloud.  
-[![Powered by Qwen](https://img.shields.io/badge/Powered%20by-Qwen-6366f1?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTQuNTkgOC4yNkwyMSA5LjI3TDE2LjE4IDEzLjk3TDE3LjM0IDIwLjczTDEyIDE3LjU0TDYuNjYgMjAuNzNMNy44MiAxMy45N0wzIDkuMjdMOS40MSA4LjI2TDEyIDJaIiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPg==)](https://qwenlm.github.io/)
+ℹ️ This package was developed with assistance from Qwen3.6, an AI language model by Alibaba Cloud. The AI provided code optimization suggestions, debugging support, and documentation drafting. All scientific decisions, parameter choices, and biological interpretations were made by the author.    
+[![Powered by Qwen](https://img.shields.io/badge/Powered%20by-Qwen-6366f1?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTQuNTkgOC4yNkwyMSA5LjI3TDE2LjE4IDEzLjk3TDE3LjM0IDIwLjczTDEyIDE3LjU0TDYuNjYgMjAuNzNMNy44MiAxMy45N0wzIDkuMjdMOS40MSA4LjI2TDEyIDJaIiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPg==)](https://qwen.ai/)
 
 ---
 > *bGMYC4 – Bayesian species delimitation, made simple, reproducible, and biologist‑friendly* 🌿🔬
