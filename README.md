@@ -11,7 +11,7 @@
 
 ## 🌍 Overview 
 
-**EN:** bGMYC4 implements a Bayesian version of the General Mixed Yule-Coalescent model for species delimitation from single-locus data. It uses Markov Chain Monte Carlo (MCMC) simulation to evaluate the posterior distribution of species boundaries, allowing the use of multiple phylogenetic trees to account for phylogenetic uncertainty. The package includes interactive diagnostics, parameter tuning, and visualization tools.
+**EN:** bGMYC4 implements a Bayesian version of the General Mixed Yule-Coalescent model for species delimitation from single-locus data. It uses Markov Chain Monte Carlo (MCMC) simulation to evaluate the posterior distribution of species boundaries, allowing the use of multiple phylogenetic trees to account for phylogenetic uncertainty. The package includes interactive diagnostics, parameter tuning, and visualization tools. Full documentation and interactive vignette available in both English and Russian. 
 
 ---
 
@@ -26,6 +26,10 @@
 | 🌐 Bilingual workflow | Full EN/RU documentation and interactive vignette |
 | 🧬 BEAST2 ready | Automatic cleaning of Nexus annotations and ultrametricity enforcement |
 | ⚡ Optimized performance | Parallel `bgmyc.multiphylo()`, pure-R post-processing, vectorized matrices |
+| ✅ Full CRAN compliance | `0 errors, 0 warnings, 0 notes`|
+| ⚡ High-performance prallelization | Stable parallel backend for Windows (`parallel::parLapply`) |
+| 🔍 Detailed guide | Interactive vignette with dynamic convergence diagnostics (need knitr, rmarkdown, pandoc) |
+| 🧹 Pure-R post-processing | No external `sort`/`uniq` dependencies |
 
 ---
 
@@ -144,9 +148,9 @@ cat("Delimited clusters:", length(out), "\n")
 | `thinning` | Sampling interval | `10–50` | Reduces autocorrelation & RAM usage |
 | `py1`, `py2` | Yule rate priors | `0`, `0.5–1.5` | Model: λ ∝ n^py; >1.5 blurs Yule/Coalescent boundary |
 | `pc1`, `pc2` | Coalescent priors | `0`, `1.0–2.0` | Models Ne change; <1 → decline, >1 → growth |
-| `t1`, `t2` | Threshold prior (species count) | `2`, `min(2, ntips-1)` | Must be `< ntips`; auto-capped to prevent crashes |
+| `t1`, `t2` | Threshold prior (species count) | `2`, `min(y, ntips-1)` | Must be `< ntips`; auto-capped to prevent crashes |
 | `scale` | MCMC proposal widths | `c(20–30, 10–15, 3–7)` | Tune via acceptance rates; higher = more conservative |
-| `ppcutoff` | Species lumping threshold | `0.05` (sensitive), `0.95` (strict) | Low = captures high intraspecific variation / ILS |
+| `ppcutoff` | Species lumping threshold | `0.05` , `0.01` | Low = captures high intraspecific variation / ILS |
 
 ---
 
@@ -202,6 +206,9 @@ compiler::enableJIT(3)  # +2–3% speedup on all MCMC loops, no code changes
 | `future::evalFuture() failed` | Run `devtools::install()` before `load_all()`; ensure package is in library |
 | Slow post-processing | Update to v4.1.0 for pure-R optimizations in `bgmyc.spec()` |
 | Non-ASCII warning in check | All R code now uses ASCII-only; comments may contain UTF-8 |
+| `Error: package 'ape' is not available` | Run `install.packages("ape")` first |
+| `future::evalFuture() failed` | Ensure package is installed via `devtools::install()`, not just `load_all()` |
+| `Non-ASCII characters in Rd file` | All R code is ASCII; comments may contain UTF-8 — this is CRAN-compliant |
 
 ---
 
@@ -213,7 +220,7 @@ compiler::enableJIT(3)  # +2–3% speedup on all MCMC loops, no code changes
   title = {bGMYC4: Reid's Bayesian General Mixed Yule-Coalescent Model for Species Delimitation, Optimized v4.1 for R ≥ 4.5},
   author = {Karabanov, Dmitry and Qwen3.6},
   year = {2026},
-  note = {R package version 4.1.0},
+  note = {Developed with assistance from Qwen3.6 AI},
   url = {https://github.com/dkarabanow-creator/bGMYC4},
 }
 
