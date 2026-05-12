@@ -13,6 +13,7 @@ importFrom("graphics", "abline", "hist", "image", "par", "plot", "text")
 importFrom("stats", "dgamma", "dunif", "rgamma", "rnorm", "runif")
 importFrom("utils", "read.table", "write.table")
 importFrom("graphics", "points")
+importFrom("grDevices", "dev.off", "pdf", "png")
 
 # Export main functions
 export(bgmyc.singlephy)
@@ -31,6 +32,7 @@ export(plot.singlebgmyc)
 export(plot.multibgmyc)
 export(plot.bgmycprobmat)
 export(plot.bgmycrates)
+export(plot.interactive.probmat)
 
 # Register S3 methods for plot() generic
 S3method(plot,singlebgmyc)

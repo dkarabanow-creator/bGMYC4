@@ -12,16 +12,17 @@ Description: Implements a Bayesian version of the general mixed Yule-coalescent
     model for species delimitation introduced by Pons et al. (2006). It uses
     Markov Chain Monte Carlo simulation to evaluate the posterior distribution
     of the model and supports flexible prior specification on model parameters.
-License: GPL (>= 3)
+License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: ape (>= 5.0), future, future.apply
-Suggests: testthat (>= 3.0.0), knitr, rmarkdown
+Suggests: testthat (>= 3.0.0), knitr, rmarkdow, plotly, htmltools,
+        base64enc, htmlwidgets, ggtree
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
 NeedsCompilation: no
-Packaged: 2026-05-06 05:52:40 UTC; Professional
+Packaged: 2026-05-10 18:21:05 UTC; Professional
 Author: Noah Reid [aut] (Original author of bGMYC),
   Dmitry Karabanov [aut, cre] (Maintainer of bGMYC4),
   Qwen 3.6 [ctb] (Code modernization and R 4.x compatibility)
